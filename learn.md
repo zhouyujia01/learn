@@ -1,25 +1,39 @@
 ## 一、获取代码
 
 1.拉取代码
-地址：http://icode.baidu.com/repos/baidu/bce-op/acloud/tree/master
 
-执行命令：git clone https://zhouyujia01@icode.baidu.com/baidu/bce-op/acloud baidu/bce-op/acloud && curl -s http://icode.baidu.com/tools/hooks/commit-msg > baidu/bce-op/acloud/.git/hooks/commit-msg && chmod u+x baidu/bce-op/acloud/.git/hooks/commit-msg && git config -f baidu/bce-op/acloud/.git/config user.name zhouyujia01 && git config -f baidu/bce-op/acloud/.git/config user.email zhouyujia01@baidu.com
+**地址**
 
+```
+http://icode.baidu.com/repos/baidu/bce-op/acloud/tree/master
+```
+
+**执行命令**
+
+```
+git clone https://zhouyujia01@icode.baidu.com/baidu/bce-op/acloud baidu/bce-op/acloud && curl -s http://icode.baidu.com/tools/hooks/commit-msg > baidu/bce-op/acloud/.git/hooks/commit-msg && chmod u+x baidu/bce-op/acloud/.git/hooks/commit-msg && git config -f baidu/bce-op/acloud/.git/config user.name zhouyujia01 && git config -f baidu/bce-op/acloud/.git/config user.email zhouyujia01@baidu.com
+```
 
 2.配置公钥 [已经配置，后续不需要再做配置]
+```
 1】设置本地ssh 密钥
+
 执行：ssh-keygen -t rsa
+
 生成的公钥地址：/Users/zhouyujia01/.ssh/
+
 文件说明：
 	id_rsa		私钥
 	id_rsa.pub  公钥
 	known_hosts	
 
 2】粘贴 （id_rsa.pub  公钥）到 http://icode.baidu.com/account/keys ssh公钥
+```
 
 
 ## 二、安装工具
 
+```
 1.安装 homebrew
 
 参考地址：https://brew.sh/index_zh-cn.html
@@ -47,6 +61,7 @@ mac 下安装也可以使用 homebrew，homebrew 是 mac 的包管理器。
     可以使用后台服务启动【推荐】： brew services start redis
     或者直接启动：redis-server /usr/local/etc/redis.conf
 
+```
 
 ## 代码解析
 

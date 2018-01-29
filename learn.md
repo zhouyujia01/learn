@@ -1,18 +1,6 @@
-## 一、获取代码
 
 1.拉取代码
 
-**地址**
-
-```
-http://icode.baidu.com/repos/baidu/bce-op/acloud/tree/master
-```
-
-**执行命令**
-
-```
-git clone https://zhouyujia01@icode.baidu.com/baidu/bce-op/acloud baidu/bce-op/acloud && curl -s http://icode.baidu.com/tools/hooks/commit-msg > baidu/bce-op/acloud/.git/hooks/commit-msg && chmod u+x baidu/bce-op/acloud/.git/hooks/commit-msg && git config -f baidu/bce-op/acloud/.git/config user.name zhouyujia01 && git config -f baidu/bce-op/acloud/.git/config user.email zhouyujia01@baidu.com
-```
 
 2.配置公钥 [已经配置，后续不需要再做配置]
 ```
@@ -60,61 +48,6 @@ mac 下安装也可以使用 homebrew，homebrew 是 mac 的包管理器。
 2、启动 redis：
     可以使用后台服务启动【推荐】： brew services start redis
     或者直接启动：redis-server /usr/local/etc/redis.conf
-
-```
-
-## 代码解析
-
-1.页面提交
-
-提交按钮
-```
-<button id="submit" type="submit" class="btn btn-google btn-flat" style="margin-left: 0px">提交
-                    </button>
-```
-
-
-表单
-```
-<form class="form-horizontal" action="/scale/innerforecast" method="post" role="form"></form>
-```
-
-说明：点击提交按钮的时候，通过 /scale/innerforecast 路径寻找后端路由。
-
-
-后端代码
-```
-@scale.route('/innerforecast', methods=['GET', 'POST'])
-@app.uuap.login_required
-def innerforecast():
-    """
-
-    Returns:
-
-    """
-    print url_for('scale.innerforecast')
-    data = flask.request.form.to_dict()
-    if data:
-        data['flavor'] = None
-        print data
-        data['submit_user'] = session.get('username')
-        data['satisfy_time'] = None
-        data['create_time'] = datetime.strftime(datetime.now(), '%Y-%m-%d %H:%M:%S')
-        encapsul.insert_inner_data_to_mysql(data)
-        return redirect(url_for('scale.innerforecast'))
-    records = encapsul.get_inner_data_from_mysql()
-    return flask.render_template('scale/innerforecast.tpl', records=records)
-
-```
-
-说明：接收到前端请求，向数据库发请求获取到数据，最终向页面返回数据
-
-
-
-
-## 优化点
-
-1.分页优化，改为异步获取数据分页
 
 
 
